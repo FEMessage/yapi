@@ -117,3 +117,27 @@ npm run dev
   ykit pack -m
   node server/app.js
 ```
+
+## FAQ
+
+### 安装node-sass失败
+
+安装依赖时, 有可能会提示node-sass失败, 此时只能重新执行安装命令 `npm i`, 听天由命。
+
+### MongoError: Authentication failed., mongodb Authentication failed
+
+如果按照教程安装MongoDB, 则默认是不启用认证的, 需要把config.json的db.user, db.pass, db.authSource干掉, 再执行 `npm run install-server`
+
+### Cannot find module 'eslint-plugin-html'
+
+找到ykit.config.js, 搜索 eslint-loader, 把下面的代码注释掉
+
+```js
+baseConfig.module.preLoaders.push({
+  test: /\.(js|jsx)$/,
+  exclude: /tui-editor|node_modules|google-diff.js/,
+  loader: 'eslint-loader'
+});
+```
+
+重新执行 `npm run dev`, 访问 http://127.0.0.1:3000/
