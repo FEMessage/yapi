@@ -18,28 +18,29 @@ vi ./config.json
 
 ```json
 {
-  "port": "3011",
+  "port": "3000",
   "adminAccount": "admin@admin.com",
   "db": {
     "servername": "127.0.0.1",
-    "DATABASE":  "yapi",
+    "DATABASE": "yapi",
     "port": 27017,
-    "user": "yapi",
-    "pass": "yapi123"
+    "user": "",
+    "pass": "",
+    "authSource": ""
   },
   "mail": {
-    "enable": true,
+    "enable": false,
     "host": "smtp.163.com",
     "port": 465,
     "from": "***@163.com",
     "auth": {
-        "user": "***@163.com",
-        "pass": "*****"
+      "user": "***@163.com",
+      "pass": "*****"
     }
   }
 }
 ```
-> db.user 和 db.pass 是 mongodb 的用户名和密码，如果没有开启 mongo 认证功能，请删除这两个选项。
+> 默认情况下, mongo 没有开启认证功能，则需要删除选项: db.user, db.pass, db.authSource, 否则 npm run install-server 将失败
 
 3.安装依赖
 

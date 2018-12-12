@@ -5,12 +5,12 @@
     "servername": "127.0.0.1",
     "DATABASE": "yapi",
     "port": 27017,
-    "user": "test1",
-    "pass": "test1",
+    "user": "",
+    "pass": "",
     "authSource": ""
   },
   "mail": {
-    "enable": true,
+    "enable": false,
     "host": "smtp.163.com",
     "port": 465,
     "from": "***@163.com",
