@@ -1,0 +1,27 @@
+{
+  "port": "3000",
+  "adminAccount": "admin@admin.com",
+  "db": {
+    "servername": "118.89.42.21",
+    "DATABASE": "yapi",
+    "port": 27017,
+    "user": "appbricks",
+    "pass": "bsl2016!",
+    "authSource": "admin"
+  },
+  "mail": {
+    "enable": false,
+    "host": "smtp.163.com",
+    "port": 465,
+    "from": "***@163.com",
+    "auth": {
+      "user": "***@163.com",
+      "pass": "*****"
+    }
+  },
+  "deepexiConfig": {
+    "tenantCenter": {
+      "getUserByTokenUrl": "http://119.29.28.59/deepexi-tenant/api/v1/users/currentUser"
+    }
+  }
+}

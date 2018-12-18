@@ -28,6 +28,7 @@
   "author": "",
   "license": "Apache2.0",
   "dependencies": {
+    "circuit-fuses": "^4.0.0",
     "ajv": "^5.5.1",
     "ajv-i18n": "^2.2.0",
     "axios": "^0.16.2",

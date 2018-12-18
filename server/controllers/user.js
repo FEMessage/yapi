@@ -8,6 +8,7 @@ const interfaceModel = require('../models/interface.js');
 const groupModel = require('../models/group.js');
 const projectModel = require('../models/project.js');
 const avatarModel = require('../models/avatar.js');
+const userAccountModel = require('../models/userAccount');
 
 const jwt = require('jsonwebtoken');
 
@@ -461,6 +462,10 @@ class userController extends baseController {
       }
 
       let result = await userInst.del(id);
+
+      // 删除用户与第三方账户关联
+      const userAccountInst = yapi.getInst(userAccountModel);
+      await userAccountInst.delByUid(id);
 
       ctx.body = yapi.commons.resReturn(result);
     } catch (e) {

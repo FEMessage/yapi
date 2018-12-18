@@ -28,7 +28,8 @@ class baseController {
       '/api/user/status',
       '/api/user/logout',
       '/api/user/avatar',
-      '/api/user/login_by_ldap'
+      '/api/user/login_by_ldap',
+      '/api/userAccount/login'
     ];
     if (ignoreRouter.indexOf(ctx.path) > -1) {
       this.$auth = true;
