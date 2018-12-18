@@ -62,7 +62,7 @@ class userAccountController extends baseController {
       const passsalt = yapi.commons.randStr();
       let data = {
         username: tenantInfo.username,
-        password: yapi.commons.generatePassword(tenantInfo.email, passsalt), // 密码默认邮箱
+        password: yapi.commons.generatePassword(tenantInfo.username, passsalt), // 密码默认邮箱
         email: tenantInfo.email,
         passsalt,
         add_time: yapi.commons.time(),
