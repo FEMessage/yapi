@@ -581,7 +581,7 @@ let routerConfig = {
     {
       action: 'login',
       path: 'login',
-      method: 'post'
+      method: 'get'
     }
   ]
 };

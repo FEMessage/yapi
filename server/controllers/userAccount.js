@@ -43,11 +43,8 @@ class userAccountController extends baseController {
         json: true
       }
     };
-
     let response = await helper.requestGet(url, null, options);
     response = JSON.parse(response);
-    console.log("response->" + response);
-    console.log("payload->" + response.payload);
 
     if (!response.payload) {
       return (ctx.body = yapi.commons.resReturn(null, 401, '用户无效'));
