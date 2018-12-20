@@ -52,6 +52,7 @@ class userAccountController extends baseController {
 
     const tenantInfo = response.payload;
     const userInst = yapi.getInst(userModel);
+    const groupInst = yapi.getInst(groupModel);
     // 查找当前租户用户是否已关联用户
     const userAccountRelation = await this.Model.findByAccountId(tenantInfo.id);
     if (!userAccountRelation) { // 如果未找到关联, 代表未注册, 执行注册+登陆操作
@@ -76,12 +77,31 @@ class userAccountController extends baseController {
       try {
         // 保存用户
         const user = await userInst.save(data);
+
         // 保存用户与DEEPEXI账户关联
         await this.Model.save({
           accountId: tenantInfo.id,
           uid: user._id,
           createdAt: new Date()
         });
+
+        // 将用户与所有分组关联
+        let groupList = await groupInst.listPublicGroup();
+        if (groupList && groupList.length > 0) {
+          for (const index in groupList) {
+            const newMemberList = [];
+            const memberData = {
+              uid: user._id,
+              role: 'owner',
+              username: user.username,
+              email: user.email
+            };
+            newMemberList.push(memberData);
+            await groupInst.addMember(groupList[index]._id, newMemberList);
+            console.log(`将用户${memberData.uid}-${memberData.username}加入分组${groupList[index]._id}-${groupList[index].group_name}`);
+          }
+        }
+
         // 登录
         this.setLoginCookie(user._id, user.passsalt);
         await this.handlePrivateGroup(user._id, user.username, user.email);

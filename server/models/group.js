@@ -146,6 +146,14 @@ class groupModel extends baseModel {
       .exec();
   }
 
+  listPublicGroup() {
+    return this.model
+      .find({
+        type: 'public'
+      })
+      .exec();
+  }
+
   del(id) {
     return this.model.remove({
       _id: id
