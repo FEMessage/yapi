@@ -16,7 +16,7 @@ const config = require('../../config');
 
 const consumer = new Consumer({
   namesrvAddr: config.mq.address,
-  consumerGroup: config.mq.consumerGroupName,
+  consumerGroup: config.mq.consumerGroupName + '-syncGroupTopic',
   httpclient: httpClient,
   isBroadcast: false
 });

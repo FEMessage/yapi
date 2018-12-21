@@ -8,7 +8,7 @@ class projectModel extends baseModel {
 
   getSchema() {
     return {
-      uid: { type: Number, required: true },
+      uid: Number,
       name: { type: String, required: true },
       basepath: { type: String },
       switch_notice: { type: Boolean, default: true },
@@ -35,7 +35,8 @@ class projectModel extends baseModel {
       is_mock_open: { type: Boolean, default: false },
       strice: { type: Boolean, default: false },
       is_json5: { type: Boolean, default: true },
-      tag: [{name: String, desc: String}]
+      tag: [{name: String, desc: String}],
+      thirdAppId: String
     };
   }
 
@@ -98,6 +99,14 @@ class projectModel extends baseModel {
     return this.model
       .find({
         prd_host: domain
+      })
+      .exec();
+  }
+
+  getByThirdAppId(appId) {
+    return this.model
+      .findOne({
+        thirdAppId: appId
       })
       .exec();
   }

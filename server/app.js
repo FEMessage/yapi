@@ -58,6 +58,10 @@ const SyncGroup = require('./subscribe/syncGroup');
 const syncGroup = new SyncGroup();
 syncGroup.process();
 
+const SyncApplication = require('./subscribe/syncApplication');
+const syncApplication = new SyncApplication();
+syncApplication.process();
+
 app.listen(yapi.WEBCONFIG.port);
 commons.log(
   `服务已启动，请打开下面链接访问: \nhttp://127.0.0.1${
