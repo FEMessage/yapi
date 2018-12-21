@@ -28,10 +28,10 @@
   "author": "",
   "license": "Apache2.0",
   "dependencies": {
-    "circuit-fuses": "^4.0.0",
     "ajv": "^5.5.1",
     "ajv-i18n": "^2.2.0",
     "axios": "^0.16.2",
+    "circuit-fuses": "^4.0.0",
     "copy-to-clipboard": "3.0.8",
     "cpu-load": "^1.0.0",
     "crypto-js": "^3.1.9-1",
@@ -77,6 +77,8 @@
     "tslib": "1.8.0",
     "underscore": "1.8.3",
     "url": "0.11.0",
+    "urllib": "^2.31.3",
+    "wm-rocketmq": "0.0.1",
     "yapi-plugin-qsso": "^1.1.0"
   },
   "devDependencies": {

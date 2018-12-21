@@ -20,8 +20,14 @@
     }
   },
   "deepexiConfig": {
+    "tenantId": "07fbd48b888747329fcda98eb251d056",
     "tenantCenter": {
       "getUserByTokenUrl": "http://119.29.28.59/deepexi-tenant/api/v1/users/currentUser"
     }
+  },
+  "mq": {
+    "address": "119.23.74.185:9876",
+    "syncGroupTopic": "SYNC_PROJECT_2_YAPI_TOPIC",
+    "consumerGroupName": "yapi-07fbd48b888747329fcda98eb251d056"
   }
 }

@@ -26,7 +26,10 @@ class groupModel extends baseModel {
       custom_field1: {
         name: String,
         enable: { type: Boolean, default: false }
-      }
+      },
+
+      thirdProjectId: String
+
       // custom_field2: {
       //   name: String,
       //   enable: { type: Boolean, default: false }
@@ -82,6 +85,14 @@ class groupModel extends baseModel {
         _id: id
       })
       .select('uid group_name group_desc add_time up_time type custom_field1')
+      .exec();
+  }
+
+  getGroupByThirdProjectId(projectId) {
+    return this.model
+      .findOne({
+        thirdProjectId: projectId
+      })
       .exec();
   }
 
