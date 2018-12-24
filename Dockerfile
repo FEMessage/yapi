@@ -4,4 +4,4 @@ COPY . /root
 
 # WORKDIR /root
 
-CMD npm start
+CMD npm i && npm start

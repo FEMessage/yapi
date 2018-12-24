@@ -15,12 +15,6 @@ docker rm -f yapi &> /dev/null
 
 docker run -d --restart=on-failure:5 \
     -w /root \
-    -e GATEWAY_HOST=119.29.28.59 \
-    -e DB_HOST=112.74.61.59 \
-    -e DB_PORT=3306 \
-    -e DB_NAME=pmsX \
-    -e DB_USERNAME=root \
-    -e DB_PASSWORD=my-secret-ab \
     -e TZ=Asia/Shanghai \
     -p 3000:3000 \
     -v $PWD/logs/:/root/logs/  \
