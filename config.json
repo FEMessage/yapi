@@ -26,7 +26,7 @@
     }
   },
   "mq": {
-    "address": "119.23.74.185:9876",
+    "address": "134.175.119.190:9876",
     "syncGroupTopic": "SYNC_PROJECT_2_YAPI_TOPIC",
     "syncApplicationTopic": "SYNC_APPLICATION_2_YAPI_TOPIC",
     "consumerGroupName": "yapi-07fbd48b888747329fcda98eb251d056"
