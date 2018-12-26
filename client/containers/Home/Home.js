@@ -345,11 +345,14 @@ class Home extends Component {
     if (this.props.login) {
       this.props.history.push('/group/261');
     }
-    let token = this.props.history.location.search.split('token=')[1]
+    let search = this.props.history.location.search.slice(1)
+    let {token} = this.formatQuery(search)
+
     if( token && !this.props.login ) {
       this.props.loginWithToken(token)
         .then(() => {
           message.success('登录成功');
+          this.props.history.push('/group/261');
         })
         .catch(() => {})
     }
@@ -365,6 +368,16 @@ class Home extends Component {
   };
   toStart = () => {
     this.props.changeMenuItem('/group');
+  };
+  formatQuery = (v) => {
+    let arr = v.split('&')
+    let obj = {}
+    arr.forEach(item => {
+      let data = item.split('=')
+      obj[data[0]] =  data[1]
+    })
+    return obj
+
   };
   render() {
     return (
