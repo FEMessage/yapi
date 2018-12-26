@@ -51,6 +51,9 @@ class userAccountController extends baseController {
     }
 
     const tenantInfo = response.payload;
+    if (tenantInfo.tenantId != config.deepexiConfig.tenantId) {
+      return (ctx.body = yapi.commons.resReturn(null, 401, '非法用户'));
+    }
     const userInst = yapi.getInst(userModel);
     const groupInst = yapi.getInst(groupModel);
     // 查找当前租户用户是否已关联用户
