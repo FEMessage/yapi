@@ -350,9 +350,15 @@ class Home extends Component {
 
     if( token && !this.props.login ) {
       this.props.loginWithToken(token)
-        .then(() => {
-          message.success('登录成功');
-          this.props.history.push('/group/261');
+        .then(resp => {
+          // 为了适配成功失败状态码都会返回200的问题
+          if(!resp.payload.data.errcode) {
+            message.success('登录成功 !');
+            this.props.history.push('/group/261');
+          }
+          else {
+          message.error(resp.payload.data.errmsg)
+          }
         })
         .catch(() => {})
     }
