@@ -2,12 +2,14 @@ import './Home.scss';
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Row, Col, Button, Icon, Card } from 'antd';
+import { Row, Col, Button, Icon, Card, message} from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { getImgPath } from '../../common.js';
 import LogoSVG from '../../components/LogoSVG/index.js';
 import { changeMenuItem } from '../../reducer/modules/menu';
+import { loginWithToken } from '../../reducer/modules/user';
+
 const plugin = require('client/plugin.js');
 
 const ThirdLogin = plugin.emitHook('third_login');
@@ -329,7 +331,8 @@ HomeGuest.propTypes = {
     login: state.user.isLogin
   }),
   {
-    changeMenuItem
+    changeMenuItem,
+    loginWithToken
   }
 )
 @withRouter
@@ -342,6 +345,14 @@ class Home extends Component {
     if (this.props.login) {
       this.props.history.push('/group/261');
     }
+    let token = this.props.history.location.search.split('token=')[1]
+    if( token && !this.props.login ) {
+      this.props.loginWithToken(token)
+        .then(() => {
+          message.success('登录成功');
+        })
+        .catch(() => {})
+    }
   }
 
   componentDidMount() {}
@@ -349,7 +360,8 @@ class Home extends Component {
     introList: PropTypes.array,
     login: PropTypes.bool,
     history: PropTypes.object,
-    changeMenuItem: PropTypes.func
+    changeMenuItem: PropTypes.func,
+    loginWithToken: PropTypes.func
   };
   toStart = () => {
     this.props.changeMenuItem('/group');

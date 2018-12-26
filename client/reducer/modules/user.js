@@ -183,6 +183,13 @@ export function loginTypeAction(index) {
   };
 }
 
+export function loginWithToken(token) {
+  return {
+    type: LOGIN,
+    payload: axios.get(`/api/userAccount/login?token=${token}`)
+  };
+}
+
 export function setBreadcrumb(data) {
   return {
     type: SET_BREADCRUMB,
