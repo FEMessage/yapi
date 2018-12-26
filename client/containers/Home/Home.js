@@ -2,12 +2,14 @@ import './Home.scss';
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Row, Col, Button, Icon, Card } from 'antd';
+import { Row, Col, Button, Icon, Card, message} from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { getImgPath } from '../../common.js';
 import LogoSVG from '../../components/LogoSVG/index.js';
 import { changeMenuItem } from '../../reducer/modules/menu';
+import { loginWithToken } from '../../reducer/modules/user';
+
 const plugin = require('client/plugin.js');
 
 const ThirdLogin = plugin.emitHook('third_login');
@@ -329,7 +331,8 @@ HomeGuest.propTypes = {
     login: state.user.isLogin
   }),
   {
-    changeMenuItem
+    changeMenuItem,
+    loginWithToken
   }
 )
 @withRouter
@@ -342,6 +345,23 @@ class Home extends Component {
     if (this.props.login) {
       this.props.history.push('/group/261');
     }
+    let search = this.props.history.location.search.slice(1)
+    let {token} = this.formatQuery(search)
+
+    if( token && !this.props.login ) {
+      this.props.loginWithToken(token)
+        .then(resp => {
+          // 为了适配成功失败状态码都会返回200的问题
+          if(!resp.payload.data.errcode) {
+            message.success('登录成功 !');
+            this.props.history.push('/group/261');
+          }
+          else {
+          message.error(resp.payload.data.errmsg)
+          }
+        })
+        .catch(() => {})
+    }
   }
 
   componentDidMount() {}
@@ -349,10 +369,21 @@ class Home extends Component {
     introList: PropTypes.array,
     login: PropTypes.bool,
     history: PropTypes.object,
-    changeMenuItem: PropTypes.func
+    changeMenuItem: PropTypes.func,
+    loginWithToken: PropTypes.func
   };
   toStart = () => {
     this.props.changeMenuItem('/group');
+  };
+  formatQuery = (v) => {
+    let arr = v.split('&')
+    let obj = {}
+    arr.forEach(item => {
+      let data = item.split('=')
+      obj[data[0]] =  data[1]
+    })
+    return obj
+
   };
   render() {
     return (
