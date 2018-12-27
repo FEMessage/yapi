@@ -51,14 +51,6 @@ const HomeGuest = () => (
                 高效、易用、功能强大的API管理平台<br />
                 <span className="desc">旨在为开发、产品、测试人员提供更优雅的接口管理服务</span>
               </div>
-              <div className="btn-group">
-                <Link to="/login">
-                  <Button type="primary" className="btn-home btn-login">
-                    登录 / 注册
-                  </Button>
-                </Link>
-                {ThirdLogin != null ? <ThirdLogin /> : null}
-              </div>
             </div>
           </Col>
           <Col lg={15} xs={0} className="col-img">
@@ -397,11 +389,6 @@ class Home extends Component {
             </div>
             <div className="tip-btns">
               <div className="btn-group">
-                <Link to="/login">
-                  <Button type="primary" className="btn-home btn-login">
-                    登录 / 注册
-                  </Button>
-                </Link>
                 <Button className="btn-home btn-home-normal">
                   <a target="_blank" rel="noopener noreferrer" href="https://yapi.ymfe.org">
                     使用文档
