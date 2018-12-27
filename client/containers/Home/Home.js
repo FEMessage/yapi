@@ -9,8 +9,6 @@ import LogoSVG from '../../components/LogoSVG/index.js';
 import { changeMenuItem } from '../../reducer/modules/menu';
 import { loginWithToken } from '../../reducer/modules/user';
 
-const plugin = require('client/plugin.js');
-
 const HomeGuest = () => (
   <div className="g-body">
     <div className="m-bg">
