@@ -1,7 +1,6 @@
 import './Home.scss';
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Row, Col, Button, Icon, Card, message} from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
@@ -12,7 +11,6 @@ import { loginWithToken } from '../../reducer/modules/user';
 
 const plugin = require('client/plugin.js');
 
-const ThirdLogin = plugin.emitHook('third_login');
 const HomeGuest = () => (
   <div className="g-body">
     <div className="m-bg">
