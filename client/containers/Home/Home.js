@@ -1,7 +1,6 @@
 import './Home.scss';
 import React, { PureComponent as Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Row, Col, Button, Icon, Card, message} from 'antd';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
@@ -10,9 +9,6 @@ import LogoSVG from '../../components/LogoSVG/index.js';
 import { changeMenuItem } from '../../reducer/modules/menu';
 import { loginWithToken } from '../../reducer/modules/user';
 
-const plugin = require('client/plugin.js');
-
-const ThirdLogin = plugin.emitHook('third_login');
 const HomeGuest = () => (
   <div className="g-body">
     <div className="m-bg">
@@ -50,14 +46,6 @@ const HomeGuest = () => (
               <div className="detail">
                 高效、易用、功能强大的API管理平台<br />
                 <span className="desc">旨在为开发、产品、测试人员提供更优雅的接口管理服务</span>
-              </div>
-              <div className="btn-group">
-                <Link to="/login">
-                  <Button type="primary" className="btn-home btn-login">
-                    登录 / 注册
-                  </Button>
-                </Link>
-                {ThirdLogin != null ? <ThirdLogin /> : null}
               </div>
             </div>
           </Col>
@@ -397,11 +385,6 @@ class Home extends Component {
             </div>
             <div className="tip-btns">
               <div className="btn-group">
-                <Link to="/login">
-                  <Button type="primary" className="btn-home btn-login">
-                    登录 / 注册
-                  </Button>
-                </Link>
                 <Button className="btn-home btn-home-normal">
                   <a target="_blank" rel="noopener noreferrer" href="https://yapi.ymfe.org">
                     使用文档
