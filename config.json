@@ -22,7 +22,7 @@
   "deepexiConfig": {
     "tenantId": "07fbd48b888747329fcda98eb251d056",
     "tenantCenter": {
-      "getUserByTokenUrl": "http://119.29.28.59/deepexi-tenant/api/v1/users/currentUser"
+      "getUserByTokenUrl": "http://119.29.28.59/deepexi-permission/api/v1/users/currentUser"
     }
   },
   "mq": {

@@ -159,7 +159,8 @@ class userAccountController extends baseController {
 
   setLoginCookie(uid, passsalt) {
     let token = jwt.sign({ uid: uid }, passsalt, { expiresIn: '7 days' });
-
+    this.ctx.cookies.set('_yapi_token', null);
+    this.ctx.cookies.set('_yapi_uid', null);
     this.ctx.cookies.set('_yapi_token', token, {
       expires: yapi.commons.expireDate(7),
       httpOnly: true
