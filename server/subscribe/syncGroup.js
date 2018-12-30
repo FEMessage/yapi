@@ -48,8 +48,6 @@ class SyncGroup {
         const userAccount = await userAccountInst.findByAccountId(thirdProject.tenantAdmin);
         if (userAccount) {
           data.uid = userAccount.uid;
-        } else {
-          data.uid = thirdProject.tenantId;
         }
 
         // 将所有用户授权到该分组
