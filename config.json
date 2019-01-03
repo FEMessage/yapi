@@ -29,6 +29,7 @@
     "address": "134.175.119.190:9876",
     "syncGroupTopic": "SYNC_PROJECT_2_YAPI_TOPIC",
     "syncApplicationTopic": "SYNC_APPLICATION_2_YAPI_TOPIC",
+    "syncTokenTopic": "SYNC_TOKEN_2_DEEPEXI_TOPIC",
     "consumerGroupName": "yapi-07fbd48b888747329fcda98eb251d056"
   }
 }
