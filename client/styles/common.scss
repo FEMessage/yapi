@@ -27,7 +27,7 @@ html {
 /* 外层轨道 */
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset006pxrgba(255,0,0,0.3);
-  // background-color: 
+  // background-color:
   background: rgba(255, 255, 255, 0.1);
 }
 /* 滚动条滑块 */
@@ -79,7 +79,7 @@ em {
   &::after {
     content: '';
     display: block;
-    height: 2.4rem;
+    //height: 2.4rem;
   }
 }
 .m-tab {
