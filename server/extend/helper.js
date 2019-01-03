@@ -140,7 +140,8 @@ module.exports = {
    * @return {*} uuid
    */
   generateUuid() {
-    return uuidv1();
+    const uuid = uuidv1();
+    return uuid.toString().replace(/-/g, '');
   }
 
 };
