@@ -294,9 +294,9 @@ export default class HeaderCom extends Component {
         <div className="content g-row">
           <Link onClick={this.relieveLink} to="/group" className="logo">
             <div className="href">
-              <span className="img">
+              <div className="img">
                 <LogoSVG length="32px" />
-              </span>
+              </div>
             </div>
           </Link>
           <Breadcrumb />
